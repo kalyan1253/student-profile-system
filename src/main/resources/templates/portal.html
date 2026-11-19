@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Explore Student Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
+        .navbar { background-color: #0b3c78; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .navbar a { color: white; text-decoration: none; font-weight: bold; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; text-align: center; }
+        h2 { color: #0b3c78; margin-bottom: 30px; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 25px 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-4px); }
+        .card h3 { color: #0b3c78; margin-top: 0; }
+        .card p { font-size: 14px; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <span>Student Portal</span>
+        <a href="/">← Back to Home</a>
+    </div>
+
+    <div class="container">
+        <h2>Our Student Services</h2>
+        <div class="cards">
+            <a href="/profile" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <h3>👤 Student Profile</h3>
+                    <p>View your personal information and student details.</p>
+                </div>
+            </a>
+
+            <a href="/academics" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <h3>🎓 Academic Details</h3>
+                    <p>View your course, branch and enrollment information.</p>
+                </div>
+            </a>
+
+            <a href="/update-list" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <h3>✏️ Update Profile</h3>
+                    <p>Keep your personal details updated.</p>
+                </div>
+            </a>
+
+            <a href="/records" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <h3>📋 Student Records</h3>
+                    <p>Manage and access student information.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

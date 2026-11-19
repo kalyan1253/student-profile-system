@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Student Profiles</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 25px; background: #f4f7f6; }
+        h2 { color: #0b3c78; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-top: 15px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-left: 5px solid #0b3c78; }
+        a { color: #0b3c78; font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h2>👤 Student Profiles</h2>
+    <p><a href="/portal">← Back to Services</a> | <a href="/add-student">+ Add New Student</a></p>
+    <form action="/profile" method="get" style="margin-bottom: 15px;">
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="Search profile by name or roll no..." style="padding: 8px; width: 260px; border: 1px solid #ccc; border-radius: 4px;" />
+        <button type="submit" style="padding: 8px 14px; background-color: #0b3c78; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Search</button>
+        <a href="/profile" style="margin-left: 8px;">Reset</a>
+    </form>
+    <div class="grid">
+        <div class="card" th:each="s : ${students}">
+            <h3 th:text="${s.name}" style="margin-top:0; color:#0b3c78;"></h3>
+            <p><strong>Roll No:</strong> <span th:text="${s.rollNumber}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${s.email}"></span></p>
+            <p><strong>Course:</strong> <span th:text="${s.course}"></span> (<span th:text="${s.branch}"></span>)</p>
+        </div>
+    </div>
+</body>
+</html>

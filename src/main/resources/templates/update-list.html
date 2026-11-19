@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Update Student Profile</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 25px; background: #f4f7f6; }
+        h2 { color: #fd7e14; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #fd7e14; color: white; }
+        .btn { background: #0b3c78; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <h2>✏️ Update Student Profiles</h2>
+    <p><a href="/portal" style="color:#0b3c78; font-weight:bold; text-decoration:none;">← Back to Services</a></p>
+    <form th:action="@{/update-list}" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="Search profiles to update..." style="padding: 6px; width: 300px;" />
+        <button type="submit" style="padding: 6px 12px; background-color: #0b3c78; color: white; border: none; cursor: pointer;">Search</button>
+        <a th:href="@{/update-list}" style="margin-left: 5px; text-decoration: none;"><button type="button" style="padding: 6px 12px; cursor: pointer;">Clear</button></a>
+    </form>
+    <table>
+        <thead>
+            <tr><th>Roll No</th><th>Name</th><th>Email</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+            <tr th:each="s : ${students}">
+                <td th:text="${s.rollNumber}"></td>
+                <td th:text="${s.name}"></td>
+                <td th:text="${s.email}"></td>
+                <td><a class="btn" th:href="@{/students/edit/{id}(id=${s.id})}">Edit Profile</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

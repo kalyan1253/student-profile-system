@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Student Attendance & Records</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 25px; background: #f4f7f6; }
+        h2 { color: #0b3c78; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #0b3c78; color: white; }
+        a { color: #0b3c78; font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h2>📋 Attendance & Student Records</h2>
+    <p><a href="/portal">← Back to Services</a> | <a href="/add-student">+ Add New Student</a> | <a href="/students">Full Searchable Table</a></p>
+    <table>
+        <thead>
+            <tr><th>Roll No</th><th>Name</th><th>Branch</th><th>Attendance (%)</th><th>Manage</th></tr>
+        </thead>
+        <tbody>
+            <tr th:each="s : ${students}">
+                <td th:text="${s.rollNumber}"></td>
+                <td th:text="${s.name}"></td>
+                <td th:text="${s.branch}"></td>
+                <td><strong th:text="${s.attendance != null ? s.attendance : 'Not Updated'}"></strong></td>
+                <td>
+                    <a th:href="@{/students/delete/{id}(id=${s.id})}" style="color:#d9534f;" onclick="return confirm('Delete this record?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
